@@ -1,0 +1,8 @@
+fastapi[standart]
+gunicorn
+uvicorn
+asyncpg
+sqlalchemy
+pydantic-settings
+alembic
+black

@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  servicedesk-user-service-postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    restart: unless-stopped
+    ports:
+      - "5431:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data:rw
+  servicedesk-user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - servicedesk-user-service-postgres
+    env_file:
+      - env/db.env
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/opt/app-root/user-service/app:rw
+      - ./alembic:/opt/app-root/user-service/alembic:rw
+      - ./alembic.ini:/opt/app-root/user-service/alembic.ini:ro

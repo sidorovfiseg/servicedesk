@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "user-service"
+version = "0.1.0"
+description = ""
+authors = ["Egor Sidorov <sidorov.egor.main@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standart"], version = "^0.115.0"}
+sqlalchemy = "^2.0.35"
+pydantic-settings = "^2.5.2"
+alembic = "^1.13.3"
+black = "^24.8.0"
+gunicorn = "^23.0.0"
+uvicorn = "^0.31.0"
+asyncpg = "^0.29.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
