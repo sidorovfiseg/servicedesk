@@ -9,5 +9,6 @@ worker_class = sgi_config.WORKER_CLASS
 reload = sgi_config.AUTO_RELOAD
 timeout = sgi_config.TIMEOUT
 
+
 def worker_int(worker):
     os.kill(worker.pid, signal.SIGINT)

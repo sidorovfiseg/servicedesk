@@ -8,7 +8,7 @@ from app.schemas.user import UserCreate, UserUpdate
 class UserCRUD:
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
-        
+
     async def get_user(self, user_id: UUID):
         result = await self.session.execute(select(User).filter(User.id == user_id))
         return result.scalars().first()
